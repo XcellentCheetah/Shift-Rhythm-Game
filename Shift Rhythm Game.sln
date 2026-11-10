@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shift Rhythm Game", "Shift Rhythm Game.csproj", "{D6252836-A0B8-47AB-B4B2-CF3E0EFB658C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D6252836-A0B8-47AB-B4B2-CF3E0EFB658C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6252836-A0B8-47AB-B4B2-CF3E0EFB658C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6252836-A0B8-47AB-B4B2-CF3E0EFB658C}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{D6252836-A0B8-47AB-B4B2-CF3E0EFB658C}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{D6252836-A0B8-47AB-B4B2-CF3E0EFB658C}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{D6252836-A0B8-47AB-B4B2-CF3E0EFB658C}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal

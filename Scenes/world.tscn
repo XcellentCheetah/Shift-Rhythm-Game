@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://c0iep3yr51j2u"]
+
+[ext_resource type="Script" uid="uid://qcev8xigcwhb" path="res://PlayerController.cs" id="1_a02cp"]
+
+[sub_resource type="Environment" id="Environment_yp4wr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_go701"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="World" type="Node3D" unique_id=524232614]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1049255011]
+environment = SubResource("Environment_yp4wr")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=222662388]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 1, 0.46232235)
+
+[node name="LeftPlatform" type="CSGBox3D" parent="." unique_id=1311809624]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 0)
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="RightPlatform" type="CSGBox3D" parent="." unique_id=835976964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Player" type="Node3D" parent="." unique_id=170516276]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.3, 0)
+
+[node name="Visuals" type="Node3D" parent="Player" unique_id=746787920]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Visuals" unique_id=1763419116]
+mesh = SubResource("BoxMesh_go701")
+
+[node name="PlayerController" type="Node" parent="." unique_id=100719887 node_paths=PackedStringArray("player")]
+script = ExtResource("1_a02cp")
+player = NodePath("../Player")
+leftPos = Vector3(-0.6, 0.3, 0)
+rightPos = Vector3(0.6, 0.3, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=642385600]
+transform = Transform3D(1, 0, 0, 0, 0.50765866, 0.86155826, 0, -0.86155826, 0.50765866, 0, 1.2591312, 0)
