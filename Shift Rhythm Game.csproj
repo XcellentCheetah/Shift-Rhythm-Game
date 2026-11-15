@@ -5,4 +5,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>ShiftRhythmGame</RootNamespace>
   </PropertyGroup>
+<ItemGroup>
+    <PackageReference Include="Melanchall.DryWetMidi" Version="8.0.3" />
+</ItemGroup>
 </Project>

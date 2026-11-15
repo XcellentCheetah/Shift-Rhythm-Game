@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cyn6blw3hegq7"
+path="res://.godot/imported/New Age Music.mp3-1cb5fb07405056ba60479c56d3b3b626.mp3str"
+
+[deps]
+
+source_file="res://Music/New Age Music.mp3"
+dest_files=["res://.godot/imported/New Age Music.mp3-1cb5fb07405056ba60479c56d3b3b626.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

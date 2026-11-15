@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cd76vskucr4qn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_r41ma"]
+
+[node name="Note" type="MeshInstance3D" unique_id=891441894]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("BoxMesh_r41ma")
