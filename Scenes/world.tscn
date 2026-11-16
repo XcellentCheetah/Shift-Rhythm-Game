@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dbw4ip21po64x" path="res://Scripts/Conductor.cs" id="2_go701"]
 [ext_resource type="Script" uid="uid://q8wjgnu1vrd8" path="res://Scripts/NoteSpawner.cs" id="3_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://cd76vskucr4qn" path="res://Scenes/Note.tscn" id="4_8j60k"]
+[ext_resource type="Script" uid="uid://kb2662gbx8y2" path="res://Scripts/GameManager.cs" id="6_5ukr8"]
 
 [sub_resource type="Environment" id="Environment_yp4wr"]
 
@@ -12,6 +13,10 @@
 size = Vector3(0.1, 0.1, 0.1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8j60k"]
+size = Vector2(4, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fo5ed"]
+size = Vector3(4, 1, 0.5)
 
 [node name="World" type="Node3D" unique_id=524232614]
 
@@ -49,6 +54,7 @@ transform = Transform3D(1, 0, 0, 0, 0.50765866, 0.86155826, 0, -0.86155826, 0.50
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=959233634]
 stream = ExtResource("2_fo5ed")
+volume_db = -80.0
 script = ExtResource("2_go701")
 bpm = 120
 
@@ -57,12 +63,23 @@ bpm = 120
 [node name="NoteSpawner" type="Node" parent="." unique_id=746166830 node_paths=PackedStringArray("noteContainer", "conductor")]
 script = ExtResource("3_5a7ea")
 notesScene = ExtResource("4_8j60k")
-noteContainer = NodePath("../NoteContainer")
+noteContainer = NodePath("../LeftNoteContainer")
 conductor = NodePath("../AudioStreamPlayer3D")
+speedMultiplier = 5.0
 
-[node name="NoteContainer" type="Node3D" parent="." unique_id=1245555327]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 1)
+[node name="LeftNoteContainer" type="Node3D" parent="." unique_id=1245555327]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.8, 0, 1)
 
 [node name="Line" type="MeshInstance3D" parent="." unique_id=1156234433]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 mesh = SubResource("PlaneMesh_8j60k")
+
+[node name="PerfectTrigger" type="Area3D" parent="." unique_id=1687751600]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PerfectTrigger" unique_id=2062123020]
+shape = SubResource("BoxShape3D_fo5ed")
+
+[node name="GameManager" type="Node" parent="." unique_id=2077764318 node_paths=PackedStringArray("perfectTrigger")]
+script = ExtResource("6_5ukr8")
+perfectTrigger = NodePath("../PerfectTrigger")

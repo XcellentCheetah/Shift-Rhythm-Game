@@ -12,6 +12,7 @@ public partial class NoteSpawner : Node
     [Export] PackedScene notesScene;
     [Export] Node3D noteContainer;
     [Export] Conductor conductor;
+    [Export] private float speedMultiplier = 1.0f;
 
     private Vector3 containerStartPosition;
 
@@ -25,7 +26,7 @@ public partial class NoteSpawner : Node
     {
         float beatsElapsed = conductor.SongPosition / conductor.SecPerBeat;
 
-        float distance = beatsElapsed / 4f;
+        float distance = beatsElapsed / 4f * speedMultiplier;
 
         noteContainer.Position = new Vector3(
             containerStartPosition.X,
@@ -52,14 +53,13 @@ public partial class NoteSpawner : Node
         {
             int pitch = (int)midiNote.NoteNumber;
 
-            // Map MIDI pitch to lane
+            
             int lane = pitch - 60;
 
-            // Ignore notes outside our 4 lanes
+          
             if (lane < 0 || lane > 3)
                 continue;
 
-            // Convert MIDI timing to seconds
             double startTime =
                 midiNote.TimeAs<MetricTimeSpan>(tempoMap).TotalSeconds;
 
@@ -73,21 +73,25 @@ public partial class NoteSpawner : Node
 
     private void SpawnNote(int lane, double startTime, double duration)
     {
-        Node3D note = notesScene.Instantiate<Node3D>();
+        Node3D noteObject = notesScene.Instantiate<Node3D>();
 
-        noteContainer.AddChild(note);
+        noteContainer.AddChild(noteObject);
 
         float laneSpacing = 0.2f;
         float centerOffset = (4 - 1) * laneSpacing / 2f;
 
-        // Assumes a constant BPM for now
         float beatPosition = (float)(startTime / conductor.SecPerBeat);
 
-        note.Position = new Vector3(
+        noteObject.Position = new Vector3(
             lane * laneSpacing - centerOffset,
             0,
-            -beatPosition * 0.25f
+            -beatPosition * 0.25f * speedMultiplier
         );
+
+        if (noteObject is Note note)
+        {
+            note.lane = lane;
+        }
 
         GD.Print($"Lane: {lane}, Time: {startTime}, Duration: {duration}");
     }

@@ -12,6 +12,21 @@ public partial class PlayerController : Node
         {
             Shift();
         }
+
+        if (@event.IsActionPressed("Lane0"))
+        {
+            GD.Print("YESSIR");
+            GameManager.instance.CheckLaneHit(0);
+        }
+
+        if (@event.IsActionPressed("Lane1"))
+            GameManager.instance.CheckLaneHit(1);
+
+        if (@event.IsActionPressed("Lane2"))
+            GameManager.instance.CheckLaneHit(2);
+
+        if (@event.IsActionPressed("Lane3"))
+            GameManager.instance.CheckLaneHit(3);
     }
 
 
@@ -26,4 +41,6 @@ public partial class PlayerController : Node
             player.Position = leftPos;
         }
     }
+
+
 }

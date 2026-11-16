@@ -1,7 +1,19 @@
 [gd_scene format=3 uid="uid://cd76vskucr4qn"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_r41ma"]
+[ext_resource type="Script" uid="uid://dwxuq8ljduluk" path="res://Scripts/Note.cs" id="1_1eugu"]
 
-[node name="Note" type="MeshInstance3D" unique_id=891441894]
+[sub_resource type="BoxMesh" id="BoxMesh_1eugu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_picia"]
+
+[node name="Note" type="Node3D" unique_id=746314874]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
-mesh = SubResource("BoxMesh_r41ma")
+script = ExtResource("1_1eugu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1014450548]
+mesh = SubResource("BoxMesh_1eugu")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1119613480]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=279852031]
+shape = SubResource("BoxShape3D_picia")
